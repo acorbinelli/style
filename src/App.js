@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import { Grid, Box, ThemeProvider, CssBaseline } from "@mui/material"
+import React from "react"
+import { theme } from "./theme"
+import HomePage from "./pages/Acasa/Acasa"
+import Navbar from "./components/Navbar"
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <ThemeProvider theme={theme}>
+      <Box
+        sx={{
+          height: "100vh",
+        }}
+        component='main'
+      >
+        <CssBaseline />
+        <Grid container justifyContent='center' alignItems='center'>
+          <Grid item xs={2} xl={2} />
+          <Grid item xs={8} xl={8}>
+            <Navbar />
+            <HomePage />
+          </Grid>
+          <Grid item xs={2} xl={2} />
+        </Grid>
+      </Box>
+    </ThemeProvider>
+  )
 }
 
-export default App;
+export default App
