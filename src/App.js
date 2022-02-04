@@ -3,12 +3,16 @@ import React, { useEffect } from "react"
 import { useLocation } from "react-router-dom"
 import { PINK_LIGHTEST, theme } from "./theme"
 import Acasa from "./pages/Acasa/Acasa"
-import Haine from "./pages/Haine/Haine"
+import Bluze from "./pages/Haine/Bluze/Bluze"
+import Fuste from "./pages/Haine/Fuste/Fuste"
+import Pantaloni from "./pages/Haine/Pantaloni/Pantaloni"
+import Rochii from "./pages/Haine/Rochii/Rochii"
+import Tricouri from "./pages/Haine/Tricouri/Tricouri"
 import Accesorii from "./pages/Accesorii/Accesorii"
 import Contact from "./pages/Contact/Contact"
-import Cumparaturi from "./pages/Cumparaturi/Cumparaturi"
 import Navbar from "./components/Navbar"
 import Footer from "./components/Footer"
+import { ShoppingProvider } from "./context/ShoppingContext"
 
 function App() {
   const location = useLocation()
@@ -20,14 +24,29 @@ function App() {
       case "/Acasa": {
         return <Acasa />
       }
-      case "/Haine": {
-        return <Haine />
+      case "/Bluze": {
+        return <Bluze />
+      }
+      case "/Fuste": {
+        return <Fuste />
+      }
+      case "/Pantaloni": {
+        return <Pantaloni />
+      }
+      case "/Rochii": {
+        return <Rochii />
+      }
+      case "/Tricouri": {
+        return <Tricouri />
       }
       case "/Accesorii": {
         return <Accesorii />
       }
       case "/Contact": {
         return <Contact />
+      }
+      case "/Acasa": {
+        return <Acasa />
       }
       default: {
         return <Acasa />
@@ -37,29 +56,31 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Box
-        sx={{
-          height: "100vh",
-          background: PINK_LIGHTEST,
-        }}
-        component='main'
-      >
-        <CssBaseline />
-        <Grid container>
-          <Grid item xs={2} xl={2} />
-          <Grid
-            item
-            xs={8}
-            xl={8}
-            sx={{ minWidth: (theme) => theme.spacing(100) }}
-          >
-            <Navbar />
-            {displayPage()}
-            <Footer />
+      <ShoppingProvider>
+        <Box
+          sx={{
+            height: "100vh",
+            background: PINK_LIGHTEST,
+          }}
+          component='main'
+        >
+          <CssBaseline />
+          <Grid container>
+            <Grid item xs={3} xl={3} />
+            <Grid
+              item
+              xs={6}
+              xl={6}
+              sx={{ minWidth: (theme) => theme.spacing(100) }}
+            >
+              <Navbar />
+              {displayPage()}
+              <Footer />
+            </Grid>
+            <Grid item xs={3} xl={3} />
           </Grid>
-          <Grid item xs={2} xl={2} />
-        </Grid>
-      </Box>
+        </Box>
+      </ShoppingProvider>
     </ThemeProvider>
   )
 }

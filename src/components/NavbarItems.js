@@ -8,13 +8,23 @@ import {
   Badge,
   Modal,
   Typography,
+  Popover,
 } from "@mui/material"
 import ShoppingBagIcon from "@mui/icons-material/ShoppingBag"
 import { appRoutes } from "../routes"
 import { PINK_LIGHTEST, PINK_LIGHT, BLACK_DEFAULT } from "../theme"
+import HainePopover from "./HainePopover"
+import { useShoppingContext } from "../context/ShoppingContext"
 
 const NavbarItems = () => {
   const [openModal, setOpenModal] = useState(false)
+  const [anchorEl, setAnchorEl] = useState(null)
+
+  const { itemsQuantity } = useShoppingContext()
+
+  const onHaineClick = (event) => {
+    setAnchorEl(event.currentTarget)
+  }
 
   const onShoppingClick = () => {
     setOpenModal((prev) => !prev)
@@ -23,10 +33,10 @@ const NavbarItems = () => {
   const navigate = useNavigate()
   return (
     <>
-      {appRoutes.map((route) => {
-        if (route.name !== "Cumparaturi") {
+      {appRoutes.map((route, index) => {
+        if (route.name !== "Cumparaturi" && route.name !== "Haine") {
           return (
-            <ListItem key={route.name}>
+            <ListItem key={index}>
               <Button
                 variant='text'
                 onClick={() => navigate(route.path)}
@@ -45,7 +55,7 @@ const NavbarItems = () => {
         }
         if (route.name === "Cumparaturi") {
           return (
-            <ListItem key={route.name}>
+            <ListItem key={index}>
               <IconButton
                 onClick={onShoppingClick}
                 sx={{
@@ -60,14 +70,37 @@ const NavbarItems = () => {
                 }}
                 size='large'
               >
-                <Badge badgeContent={10} max={99} color='secondary'>
+                <Badge badgeContent={itemsQuantity} max={99} color='secondary'>
                   <ShoppingBagIcon fontSize='large' />
                 </Badge>
               </IconButton>
             </ListItem>
           )
         }
+        if (route.name === "Haine") {
+          return (
+            <ListItem key={index}>
+              <Button
+                variant='text'
+                onClick={(event) => {
+                  onHaineClick(event)
+                }}
+                sx={{
+                  fontFamily: "Segoe print",
+                  fontSize: 18,
+                  color: BLACK_DEFAULT,
+                  "&:hover": { background: PINK_LIGHT, color: "white" },
+                }}
+                size='small'
+              >
+                {route.name}
+              </Button>
+              <HainePopover anchorEl={anchorEl} setAnchorEl={setAnchorEl} />
+            </ListItem>
+          )
+        }
       })}
+
       {
         <Modal
           open={openModal}

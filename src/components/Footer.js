@@ -31,7 +31,7 @@ const Footer = () => {
         sx={{
           "& > *": {
             ml: 3,
-            "&:hover": { color: "white", background: PINK_LIGHT },
+            "&:hover": { color: "white", backgroundColor: PINK_LIGHT },
           },
         }}
       >
