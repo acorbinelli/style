@@ -1,8 +1,8 @@
 import React from "react"
 import { Grid, Box, ThemeProvider, CssBaseline } from "@mui/material"
 
-const HomePage = () => {
-  return <Box>acasa</Box>
+const Accesorii = () => {
+  return <Box>Accesorii</Box>
 }
 
-export default HomePage
+export default Accesorii

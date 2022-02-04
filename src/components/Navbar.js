@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "react-router-dom"
 import {
   Grid,
   Box,
@@ -9,6 +10,7 @@ import {
 } from "@mui/material"
 import Logo from "./Logo"
 import NavbarItems from "./NavbarItems"
+import { PINK_LIGHTEST, PINK_LIGHT } from "../theme"
 
 const Navbar = () => {
   return (
@@ -21,7 +23,18 @@ const Navbar = () => {
       }}
     >
       <List sx={{ display: "flex" }}>
-        <ListItem>
+        <ListItem
+          button
+          component={Link}
+          to='/Acasa'
+          sx={{
+            "&:hover": {
+              background: PINK_LIGHTEST,
+              borderRadius: 2,
+              color: PINK_LIGHT,
+            },
+          }}
+        >
           <Logo />
         </ListItem>
         <NavbarItems />
