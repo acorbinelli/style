@@ -16,9 +16,10 @@ const Navbar = () => {
   return (
     <Box
       sx={{
-        my: 10,
+        mt: 5,
+        mb: 3,
         display: "flex",
-        justifyContent: "space-between",
+        justifyContent: "center",
         alignItems: "center",
       }}
     >
@@ -28,6 +29,7 @@ const Navbar = () => {
           component={Link}
           to='/Acasa'
           sx={{
+            mr: 3,
             "&:hover": {
               background: PINK_LIGHTEST,
               borderRadius: 2,

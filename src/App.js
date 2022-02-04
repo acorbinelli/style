@@ -8,6 +8,7 @@ import Accesorii from "./pages/Accesorii/Accesorii"
 import Contact from "./pages/Contact/Contact"
 import Cumparaturi from "./pages/Cumparaturi/Cumparaturi"
 import Navbar from "./components/Navbar"
+import Footer from "./components/Footer"
 
 function App() {
   const location = useLocation()
@@ -44,11 +45,17 @@ function App() {
         component='main'
       >
         <CssBaseline />
-        <Grid container justifyContent='center' alignItems='center'>
+        <Grid container>
           <Grid item xs={2} xl={2} />
-          <Grid item xs={8} xl={8}>
+          <Grid
+            item
+            xs={8}
+            xl={8}
+            sx={{ minWidth: (theme) => theme.spacing(100) }}
+          >
             <Navbar />
             {displayPage()}
+            <Footer />
           </Grid>
           <Grid item xs={2} xl={2} />
         </Grid>

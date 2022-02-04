@@ -1,4 +1,4 @@
-import React from "react"
+import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import {
   ListItem,
@@ -8,13 +8,18 @@ import {
   Badge,
   Modal,
   Typography,
-  Select,
 } from "@mui/material"
 import ShoppingBagIcon from "@mui/icons-material/ShoppingBag"
 import { appRoutes } from "../routes"
 import { PINK_LIGHTEST, PINK_LIGHT, BLACK_DEFAULT } from "../theme"
 
 const NavbarItems = () => {
+  const [openModal, setOpenModal] = useState(false)
+
+  const onShoppingClick = () => {
+    setOpenModal((prev) => !prev)
+  }
+
   const navigate = useNavigate()
   return (
     <>
@@ -26,8 +31,9 @@ const NavbarItems = () => {
                 variant='text'
                 onClick={() => navigate(route.path)}
                 sx={{
-                  fontFamily: "Architects Daughter",
+                  fontFamily: "Segoe print",
                   fontSize: 18,
+                  color: BLACK_DEFAULT,
                   "&:hover": { background: PINK_LIGHT, color: "white" },
                 }}
                 size='small'
@@ -41,10 +47,8 @@ const NavbarItems = () => {
           return (
             <ListItem key={route.name}>
               <IconButton
-                onClick={() => {}}
+                onClick={onShoppingClick}
                 sx={{
-                  fontFamily: "Architects Daughter",
-                  fontSize: 18,
                   "&:hover": {
                     background: PINK_LIGHT,
                     color: "white",
@@ -66,7 +70,8 @@ const NavbarItems = () => {
       })}
       {
         <Modal
-          open={true}
+          open={openModal}
+          onBackdropClick={onShoppingClick}
           sx={{
             display: "flex",
             alignItems: "center",
