@@ -27,6 +27,7 @@ const ItemModal = ({ openModal, setOpenModal, selectedItem }) => {
         size: size,
         quantity: quantity,
         price: quantity * selectedItem.price,
+        picture: selectedItem.picture,
       }
       setManagedItem(newItem)
     }

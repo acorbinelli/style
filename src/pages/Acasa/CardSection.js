@@ -1,6 +1,6 @@
 import React from "react"
-import { Box, Card, Paper, Typography, Button } from "@mui/material"
-import { PINK_DARK, PINK_LIGHT } from "../../theme"
+import { Box, Card, Typography, Button } from "@mui/material"
+import { PINK_LIGHT } from "../../theme"
 import Prod1 from "../../images/acasa/prod1.jpg"
 import Prod2 from "../../images/acasa/prod2.jpg"
 import Prod3 from "../../images/acasa/prod3.jpg"

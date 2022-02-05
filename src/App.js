@@ -1,5 +1,4 @@
 import { Grid, Box, ThemeProvider, CssBaseline } from "@mui/material"
-import React, { useEffect } from "react"
 import { useLocation } from "react-router-dom"
 import { PINK_LIGHTEST, theme } from "./theme"
 import Acasa from "./pages/Acasa/Acasa"

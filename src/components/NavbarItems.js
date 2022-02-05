@@ -1,26 +1,18 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
-import {
-  ListItem,
-  Box,
-  Button,
-  IconButton,
-  Badge,
-  Modal,
-  Typography,
-  Popover,
-} from "@mui/material"
+import { ListItem, Button, IconButton, Badge } from "@mui/material"
 import ShoppingBagIcon from "@mui/icons-material/ShoppingBag"
 import { appRoutes } from "../routes"
-import { PINK_LIGHTEST, PINK_LIGHT, BLACK_DEFAULT } from "../theme"
+import { PINK_LIGHT, BLACK_DEFAULT } from "../theme"
 import HainePopover from "./HainePopover"
+import Cumparaturi from "../pages/Cumparaturi/Cumparaturi"
 import { useShoppingContext } from "../context/ShoppingContext"
 
 const NavbarItems = () => {
   const [openModal, setOpenModal] = useState(false)
   const [anchorEl, setAnchorEl] = useState(null)
 
-  const { itemsQuantity } = useShoppingContext()
+  const { itemsQuantity, items } = useShoppingContext()
 
   const onHaineClick = (event) => {
     setAnchorEl(event.currentTarget)
@@ -99,37 +91,14 @@ const NavbarItems = () => {
             </ListItem>
           )
         }
+        return null
       })}
 
-      {
-        <Modal
-          open={openModal}
-          onBackdropClick={onShoppingClick}
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          <Box
-            sx={{
-              background: PINK_LIGHTEST,
-              borderRadius: 2,
-              display: "flex",
-              p: 2,
-            }}
-          >
-            <Box display='flex' flexDirection='column' sx={{ mr: 1 }}>
-              <Box>Picture</Box>
-              <Box>Page</Box>
-            </Box>
-            <Box sx={{ ml: 1 }}>
-              <Typography>PRODUCT NAME</Typography>
-              <Typography>PRODUCT PRICE</Typography>
-            </Box>
-          </Box>
-        </Modal>
-      }
+      <Cumparaturi
+        openModal={openModal}
+        onShoppingClick={onShoppingClick}
+        items={items}
+      />
     </>
   )
 }

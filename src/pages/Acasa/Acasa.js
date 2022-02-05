@@ -1,5 +1,5 @@
 import React from "react"
-import { Box, Card, Paper, Typography, Button } from "@mui/material"
+import { Box, Paper } from "@mui/material"
 import { Navigation, Pagination, Scrollbar, A11y } from "swiper"
 import SwiperCore, { Autoplay } from "swiper"
 import { SwiperSlide, Swiper } from "swiper/react"
@@ -13,7 +13,6 @@ import "swiper/css"
 import "swiper/css/navigation"
 import "swiper/css/pagination"
 import "swiper/css/scrollbar"
-import { PINK_DARK, PINK_LIGHT } from "../../theme"
 
 const HomePage = () => {
   SwiperCore.use([Autoplay])

@@ -25,7 +25,6 @@ export const appRoutes = [
   },
   {
     name: "Cumparaturi",
-    element: <Cumparaturi />,
     path: "/Cumparaturi",
   },
 ]
