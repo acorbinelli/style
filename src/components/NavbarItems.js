@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect, Fragment } from "react"
 import { useNavigate } from "react-router-dom"
 import { ListItem, Button, IconButton, Badge } from "@mui/material"
 import ShoppingBagIcon from "@mui/icons-material/ShoppingBag"
@@ -22,7 +22,14 @@ const NavbarItems = () => {
     setOpenModal((prev) => !prev)
   }
 
+  useEffect(() => {
+    if (!items.length) {
+      setOpenModal(false)
+    }
+  }, [items])
+
   const navigate = useNavigate()
+
   return (
     <>
       {appRoutes.map((route, index) => {
@@ -50,6 +57,7 @@ const NavbarItems = () => {
             <ListItem key={index}>
               <IconButton
                 onClick={onShoppingClick}
+                disabled={!items.length}
                 sx={{
                   "&:hover": {
                     background: PINK_LIGHT,
@@ -94,11 +102,7 @@ const NavbarItems = () => {
         return null
       })}
 
-      <Cumparaturi
-        openModal={openModal}
-        onShoppingClick={onShoppingClick}
-        items={items}
-      />
+      <Cumparaturi openModal={openModal} onShoppingClick={onShoppingClick} />
     </>
   )
 }

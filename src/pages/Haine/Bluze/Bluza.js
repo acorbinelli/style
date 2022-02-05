@@ -7,7 +7,12 @@ const Bluza = ({ onClick, item }) => {
       <Box
         component={Button}
         onClick={() =>
-          onClick({ name: item.name, price: item.price, picture: item.picture })
+          onClick({
+            id: item.id,
+            name: item.name,
+            price: item.price,
+            picture: item.picture,
+          })
         }
         sx={{
           "&:hover": { color: PINK_LIGHTEST },

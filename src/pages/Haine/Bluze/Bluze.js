@@ -34,9 +34,9 @@ const Bluze = () => {
           }}
         >
           <Grid container spacing={5}>
-            {bluze.map((bluza, index) => (
+            {bluze.map((bluza) => (
               <Grid
-                key={bluza.name}
+                key={bluza.id}
                 item
                 xs={4}
                 xl={4}

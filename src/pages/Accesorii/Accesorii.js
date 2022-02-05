@@ -1,9 +1,8 @@
-import { useState, useEffect } from "react"
-import { Paper, Grid, Box, Typography, Button, Modal } from "@mui/material"
+import { useState } from "react"
+import { Paper, Grid, Box } from "@mui/material"
 import ItemModal from "../ItemModal"
 import Accesoriu from "./Accesoriu"
 import accesorii from "../../mocks/accesorii"
-import { maxHeight } from "@mui/system"
 
 const Accesorii = () => {
   const [openModal, setOpenModal] = useState(false)

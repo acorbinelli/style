@@ -3,15 +3,13 @@ import { Box, Button, Typography } from "@mui/material"
 import { PINK_LIGHTEST } from "../../theme"
 
 const Accesoriu = ({ onClick, item }) => {
-  useEffect(() => {
-    console.log(item)
-  }, [item])
   return (
     <>
       <Box
         component={Button}
         onClick={() =>
           onClick({
+            id: item.id,
             name: item.name,
             price: item.price,
             picture: item.picture,

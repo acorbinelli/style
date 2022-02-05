@@ -36,7 +36,7 @@ const Tricouri = () => {
           <Grid container spacing={5}>
             {tricouri.map((tricou) => (
               <Grid
-                key={tricou.name}
+                key={tricou.id}
                 item
                 xs={4}
                 xl={4}

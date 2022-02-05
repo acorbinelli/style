@@ -7,31 +7,37 @@ import Zgren from "../images/bluze/Zgren.jpg"
 
 const bluze = [
   {
+    id: 10,
     name: "Cuflor",
     price: "85",
     picture: Cuflor,
   },
   {
+    id: 2,
     name: "Grenar",
     price: "85",
     picture: Grenar,
   },
   {
+    id: 3,
     name: "Gwendolyn",
     price: "85",
     picture: Gwendolyn,
   },
   {
+    id: 4,
     name: "Jowi",
     price: "85",
     picture: Jowi,
   },
   {
+    id: 5,
     name: "Lucuna",
     price: "85",
     picture: Lucuna,
   },
   {
+    id: 6,
     name: "Zgren",
     price: "85",
     picture: Zgren,

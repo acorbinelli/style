@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import {
   Paper,
   Grid,
@@ -15,23 +15,9 @@ import {
 import { useShoppingContext } from "../context/ShoppingContext"
 
 const ItemModal = ({ openModal, setOpenModal, selectedItem }) => {
-  const { setItems } = useShoppingContext()
+  const { onAddItem } = useShoppingContext()
   const [size, setSize] = useState("")
   const [quantity, setQuantity] = useState(1)
-  const [managedItem, setManagedItem] = useState({})
-
-  useEffect(() => {
-    if (selectedItem) {
-      const newItem = {
-        name: selectedItem.name,
-        size: size,
-        quantity: quantity,
-        price: quantity * selectedItem.price,
-        picture: selectedItem.picture,
-      }
-      setManagedItem(newItem)
-    }
-  }, [size, quantity, selectedItem])
 
   const onSelectSize = (event) => {
     setSize(event.target.value)
@@ -129,7 +115,7 @@ const ItemModal = ({ openModal, setOpenModal, selectedItem }) => {
                 color='secondary'
                 sx={{ color: "white", mt: 3 }}
                 onClick={() => {
-                  setItems((prev) => [...prev, { ...managedItem }])
+                  onAddItem({ ...selectedItem, quantity: quantity, size: size })
                   setQuantity(1)
                   onOpenModal()
                 }}
