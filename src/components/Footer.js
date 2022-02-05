@@ -31,23 +31,32 @@ const Footer = () => {
         sx={{
           "& > *": {
             ml: 3,
-            "&:hover": { color: "white", backgroundColor: PINK_LIGHT },
           },
         }}
       >
-        <IconButton>
+        <IconButton
+          sx={{ "&:hover": { color: "white", background: PINK_LIGHT } }}
+        >
           <FacebookIcon />
         </IconButton>
-        <IconButton>
+        <IconButton
+          sx={{ "&:hover": { color: "white", background: PINK_LIGHT } }}
+        >
           <YouTubeIcon />
         </IconButton>
-        <IconButton>
+        <IconButton
+          sx={{ "&:hover": { color: "white", background: PINK_LIGHT } }}
+        >
           <InstagramIcon />
         </IconButton>
-        <IconButton>
+        <IconButton
+          sx={{ "&:hover": { color: "white", background: PINK_LIGHT } }}
+        >
           <TwitterIcon />
         </IconButton>
-        <IconButton>
+        <IconButton
+          sx={{ "&:hover": { color: "white", background: PINK_LIGHT } }}
+        >
           <PinterestIcon />
         </IconButton>
       </Box>

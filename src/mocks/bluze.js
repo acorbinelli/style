@@ -1,9 +1,9 @@
-import Cuflor from "../../../images/bluze/Cuflor.jpg"
-import Grenar from "../../../images/bluze/Grenar.jpg"
-import Gwendolyn from "../../../images/bluze/Gwendolyn.jpg"
-import Jowi from "../../../images/bluze/Jowi.jpg"
-import Lucuna from "../../../images/bluze/Lucuna.jpg"
-import Zgren from "../../../images/bluze/Zgren.jpg"
+import Cuflor from "../images/bluze/Cuflor.jpg"
+import Grenar from "../images/bluze/Grenar.jpg"
+import Gwendolyn from "../images/bluze/Gwendolyn.jpg"
+import Jowi from "../images/bluze/Jowi.jpg"
+import Lucuna from "../images/bluze/Lucuna.jpg"
+import Zgren from "../images/bluze/Zgren.jpg"
 
 const bluze = [
   {

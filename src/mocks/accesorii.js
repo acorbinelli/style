@@ -1,11 +1,11 @@
-import Catalunya from "../../../images/accesorii/Catalunya - cericei.jpg"
-import Cimao from "../../../images/accesorii/Cimao - curea.jpg"
-import Moonstar from "../../../images/accesorii/Moonstar - cercei.jpg"
-import Moonstone from "../../../images/accesorii/Moonstone - cercei.jpg"
-import Reina from "../../../images/accesorii/Reina - cercei.jpg"
-import Rhinestone from "../../../images/accesorii/Rhinestone - inel.jpg"
-import Stardrop from "../../../images/accesorii/Stardrop - cercei.jpg"
-import Trisica from "../../../images/accesorii/Trisica - corset.jpg"
+import Catalunya from "../images/accesorii/Catalunya.jpg"
+import Cimao from "../images/accesorii/Cimao.jpg"
+import Moonstar from "../images/accesorii/Moonstar.jpg"
+import Moonstone from "../images/accesorii/Moonstone.jpg"
+import Reina from "../images/accesorii/Reina.jpg"
+import Rhinestone from "../images/accesorii/Rhinestone.jpg"
+import Stardrop from "../images/accesorii/Stardrop.jpg"
+import Trisica from "../images/accesorii/Trisica.jpg"
 
 const accesorii = [
   {

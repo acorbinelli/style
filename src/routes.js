@@ -1,5 +1,4 @@
 import Acasa from "./pages/Acasa/Acasa"
-import Haine from "./pages/Haine/Haine"
 import Accesorii from "./pages/Accesorii/Accesorii"
 import Contact from "./pages/Contact/Contact"
 import Cumparaturi from "./pages/Cumparaturi/Cumparaturi"
@@ -12,7 +11,6 @@ export const appRoutes = [
   },
   {
     name: "Haine",
-    element: <Haine />,
     path: "/Haine",
   },
   {

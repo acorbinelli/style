@@ -1,9 +1,9 @@
-import Belle from "../../../images/pantaloni/Belle.jpg"
-import Giuliana from "../../../images/pantaloni/Giuliana.jpg"
-import Malnia from "../../../images/pantaloni/Malnia.jpg"
-import Sibpal from "../../../images/pantaloni/Sibpal.jpg"
-import Sienne from "../../../images/pantaloni/Sienne.jpg"
-import Tyamizu from "../../../images/pantaloni/Tyamizu.jpg"
+import Belle from "../images/pantaloni/Belle.jpg"
+import Giuliana from "../images/pantaloni/Giuliana.jpg"
+import Malnia from "../images/pantaloni/Malnia.jpg"
+import Sibpal from "../images/pantaloni/Sibpal.jpg"
+import Sienne from "../images/pantaloni/Sienne.jpg"
+import Tyamizu from "../images/pantaloni/Tyamizu.jpg"
 
 const pantaloni = [
   {

@@ -4,7 +4,7 @@ const ShoppingContext = createContext({
   itemsQuantity: 0,
   items: [{}],
   totalPrice: 0,
-  setItems: () => {},
+  setItems: () => [{}],
 })
 
 export const ShoppingProvider = ({ children }) => {
@@ -16,10 +16,12 @@ export const ShoppingProvider = ({ children }) => {
     let calculatedQuantity = 0
     let calculatedPrice = 0
 
-    items.forEach(({ item }) => {
-      calculatedQuantity += item.quantity
-      calculatedPrice += item.price
-    })
+    if (items.length) {
+      items.forEach((item) => {
+        calculatedQuantity += item.quantity
+        calculatedPrice += item.price
+      })
+    }
 
     setItemsQuantity(calculatedQuantity)
     setTotalPrice(calculatedPrice)

@@ -45,9 +45,6 @@ function App() {
       case "/Contact": {
         return <Contact />
       }
-      case "/Acasa": {
-        return <Acasa />
-      }
       default: {
         return <Acasa />
       }
