@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react"
-import { Paper, Grid, Box, Typography, Button, Modal } from "@mui/material"
+import { useState } from "react"
+import { Paper, Grid, Box } from "@mui/material"
 import ItemModal from "../../ItemModal"
 import Bluza from "./Bluza"
 import bluze from "../../../mocks/bluze"

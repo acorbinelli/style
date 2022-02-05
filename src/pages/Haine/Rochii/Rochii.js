@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { Paper, Grid, Box, Typography, Button, Modal } from "@mui/material"
+import { Paper, Grid, Box } from "@mui/material"
 import ItemModal from "../../ItemModal"
 import Rochie from "./Rochie"
 import rochii from "../../../mocks/rochii"
