@@ -1,6 +1,6 @@
 import { Box, Typography } from "@mui/material"
-import ContactPicture from "../../images/contact/contact.png"
-import Harta from "../../images/contact/harta.jpg"
+import ContactPicture from "../../imagesUI/contact/contact.png"
+import contactConfig from "../../storeConfig/contactConfig"
 
 const Contact = () => {
   return (
@@ -13,10 +13,10 @@ const Contact = () => {
       >
         <Box sx={{ mr: 10 }}>
           <Typography variant='h6' sx={{ fontFamily: "Segoe Print" }}>
-            Telefon: 0730 234 567
+            {contactConfig.telephoneField}
           </Typography>
           <Typography variant='h6' sx={{ fontFamily: "Segoe Print" }}>
-            Adresa de email: contact@thystyle.ro
+            {contactConfig.emailField}
           </Typography>
         </Box>
         <Box
@@ -30,22 +30,18 @@ const Contact = () => {
         />
       </Box>
       <Box display='flex' justifyContent='space-between' sx={{ width: "100%" }}>
+        {contactConfig.mapCode}
         <Box
-          sx={{
-            backgroundImage: `url(${Harta})`,
-            backgroundPosition: "center",
-            backgroundSize: "cover",
-            height: (theme) => theme.spacing(40),
-            width: (theme) => theme.spacing(60),
-            mr: 2,
-          }}
-        />
-        <Box display='flex' flexDirection='column' justifyContent='center'>
+          display='flex'
+          flexDirection='column'
+          justifyContent='center'
+          sx={{ ml: 6 }}
+        >
           <Typography variant='body1' sx={{ fontFamily: "Segoe Print", mb: 3 }}>
-            Adresa: Piața Consiliul Europei 2, Timișoara 300627
+            {contactConfig.addressField}
           </Typography>
           <Typography variant='body1' sx={{ fontFamily: "Segoe Print" }}>
-            Program: 09:00 - 21:00 Luni - Vineri
+            {contactConfig.workHoursField}
           </Typography>
         </Box>
       </Box>

@@ -1,53 +1,39 @@
 import { Grid, Box, ThemeProvider, CssBaseline } from "@mui/material"
 import { useLocation } from "react-router-dom"
 import { PINK_LIGHTEST, theme } from "./theme"
-import Acasa from "./pages/Acasa/Acasa"
-import Bluze from "./pages/Haine/Bluze/Bluze"
-import Fuste from "./pages/Haine/Fuste/Fuste"
-import Pantaloni from "./pages/Haine/Pantaloni/Pantaloni"
-import Rochii from "./pages/Haine/Rochii/Rochii"
-import Tricouri from "./pages/Haine/Tricouri/Tricouri"
-import Accesorii from "./pages/Accesorii/Accesorii"
+import Home from "./pages/Home/Home"
+import Merchandise from "./pages/Merchandise/Merchandise"
 import Contact from "./pages/Contact/Contact"
 import Navbar from "./components/Navbar"
 import Footer from "./components/Footer"
 import { ShoppingProvider } from "./context/ShoppingContext"
+import headerConfig from "./storeConfig/headerConfig"
 
 function App() {
+  const definedPaths = headerConfig.navItems
   const location = useLocation()
 
   const displayPage = () => {
     const path = location.pathname
+    const foundPath = definedPaths.find((defPath) => defPath.path === path)
 
-    switch (path) {
-      case "/Acasa": {
-        return <Acasa />
-      }
-      case "/Bluze": {
-        return <Bluze />
-      }
-      case "/Fuste": {
-        return <Fuste />
-      }
-      case "/Pantaloni": {
-        return <Pantaloni />
-      }
-      case "/Rochii": {
-        return <Rochii />
-      }
-      case "/Tricouri": {
-        return <Tricouri />
-      }
-      case "/Accesorii": {
-        return <Accesorii />
-      }
-      case "/Contact": {
-        return <Contact />
-      }
-      default: {
-        return <Acasa />
+    if (foundPath) {
+      switch (foundPath.type) {
+        case "homePage": {
+          return <Home />
+        }
+        case "merchandise": {
+          return <Merchandise />
+        }
+        case "contactPage": {
+          return <Contact />
+        }
+        default: {
+          return <Home />
+        }
       }
     }
+    return <Home />
   }
 
   return (
@@ -56,7 +42,7 @@ function App() {
         <Box
           sx={{
             height: "100vh",
-            background: PINK_LIGHTEST,
+            background: (theme) => theme.palette.secondary.light,
           }}
           component='main'
         >

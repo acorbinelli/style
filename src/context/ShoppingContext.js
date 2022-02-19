@@ -6,6 +6,8 @@ import {
   useEffect,
   useCallback,
 } from "react"
+import { useLocation } from "react-router-dom"
+import headerConfig from "../storeConfig/headerConfig"
 
 const ShoppingContext = createContext({
   itemsQuantity: 0,
@@ -18,17 +20,38 @@ const ShoppingContext = createContext({
   openSnackbar: false,
   onPurchase: () => {},
   toggleSnackbar: () => {},
+  selectedCategory: "",
+  setSelectedCategory: () => {},
 })
 
 export const ShoppingProvider = ({ children }) => {
+  const location = useLocation()
+  const path = location.pathname
   const [itemsQuantity, setItemsQuantity] = useState(0)
   const [items, setItems] = useState([])
   const [totalPrice, setTotalPrice] = useState(0)
+  const [selectedCategory, setSelectedCategory] = useState("")
 
-  const onPurchase = useCallback(() => {
+  const onPurchase = useCallback((selectedItems) => {
+    console.log(
+      "Sending order to backend - you can INTEGRATE API CALL IN ShoppingContext.js",
+      "Purchase List:",
+      selectedItems
+    )
     setItems([])
     setTotalPrice(0)
     setItemsQuantity(0)
+  }, [])
+
+  useEffect(() => {
+    if (path !== "/Home" && path !== "/Contact") {
+      const navItem = headerConfig.navItems.find((item) => item.path === path)
+      if (navItem && navItem?.subMenu) {
+        setSelectedCategory(navItem.subMenu[0])
+      } else {
+        setSelectedCategory(navItem.tag)
+      }
+    }
   }, [])
 
   useEffect(() => {
@@ -38,14 +61,12 @@ export const ShoppingProvider = ({ children }) => {
     if (items.length) {
       items.forEach((item) => {
         calculatedQuantity += item.quantity
-        for (let i = 0; i < calculatedQuantity; i++) {
-          calculatedPrice += parseInt(item.price)
-        }
+        calculatedPrice += parseInt(item.price) * parseInt(item.quantity)
       })
     }
 
     setItemsQuantity(parseInt(calculatedQuantity))
-    setTotalPrice(parseInt(calculatedPrice))
+    setTotalPrice(calculatedPrice)
   }, [items])
 
   const onAddItem = useCallback((item) => {
@@ -106,6 +127,8 @@ export const ShoppingProvider = ({ children }) => {
       onRemoveItem,
       onIncrementItem,
       onPurchase,
+      selectedCategory,
+      setSelectedCategory,
     }
   }, [
     itemsQuantity,
@@ -116,6 +139,8 @@ export const ShoppingProvider = ({ children }) => {
     onIncrementItem,
     totalPrice,
     onPurchase,
+    selectedCategory,
+    setSelectedCategory,
   ])
 
   return (

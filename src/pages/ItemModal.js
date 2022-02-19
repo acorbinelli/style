@@ -13,6 +13,8 @@ import {
   TextField,
 } from "@mui/material"
 import { useShoppingContext } from "../context/ShoppingContext"
+import merchandiseConfig from "../storeConfig/merchandiseConfig"
+import priceConfig from "../storeConfig/priceConfig"
 
 const ItemModal = ({ openModal, setOpenModal, selectedItem }) => {
   const { onAddItem } = useShoppingContext()
@@ -71,37 +73,47 @@ const ItemModal = ({ openModal, setOpenModal, selectedItem }) => {
                 {quantity > 0 && quantity <= 10
                   ? selectedItem.price * quantity
                   : selectedItem.price}
-                RON
+                {priceConfig.currency}
               </Typography>
-              <Typography
-                variant='body2'
-                sx={{ fontFamily: "Segoe Print", mb: 3 }}
-              >
-                cod: 000
-              </Typography>
-              <FormControl fullWidth sx={{ mt: 2, mr: 5 }}>
-                <InputLabel id='select-size'>Marimea</InputLabel>
-                <Select
-                  labelId='select-size'
-                  id='demo-simple-select'
-                  value={size}
-                  label='Marimea'
-                  onChange={onSelectSize}
+              {merchandiseConfig.displayItemCode && (
+                <Typography
+                  variant='caption'
+                  sx={{ fontFamily: "Segoe Print", mb: 3 }}
                 >
-                  <MenuItem value={"S"}>S</MenuItem>
-                  <MenuItem value={"M"}>M</MenuItem>
-                  <MenuItem value={"L"}>L</MenuItem>
-                  <MenuItem value={"XL"}>XL</MenuItem>
-                </Select>
-              </FormControl>
+                  {merchandiseConfig.codeText} {selectedItem.itemCode}
+                </Typography>
+              )}
+
+              {selectedItem?.availableSizes &&
+                selectedItem.availableSizes.length && (
+                  <FormControl fullWidth sx={{ mt: 2, mr: 5 }}>
+                    <InputLabel id='select-size' sx={{ left: "-3%" }}>
+                      {merchandiseConfig.sizeText}
+                    </InputLabel>
+                    <Select
+                      labelId='select-size'
+                      id='demo-simple-select'
+                      value={size}
+                      variant='standard'
+                      onChange={onSelectSize}
+                    >
+                      {selectedItem.availableSizes.map((size) => (
+                        <MenuItem key={size} value={size}>
+                          {size}
+                        </MenuItem>
+                      ))}
+                    </Select>
+                  </FormControl>
+                )}
               <TextField
                 fullWidth
-                label='Cantitatea'
-                placeholder='Cantitatea'
+                label={merchandiseConfig.quantityText}
+                placeholder={merchandiseConfig.quantityText}
                 type='number'
                 inputProps={{ min: 1, max: 10 }}
                 sx={{ mt: 3 }}
                 value={quantity}
+                variant='standard'
                 onChange={(event) => {
                   if (event.target.value <= 10) {
                     setQuantity(parseInt(event.target.value))
@@ -119,9 +131,8 @@ const ItemModal = ({ openModal, setOpenModal, selectedItem }) => {
                   setQuantity(1)
                   onOpenModal()
                 }}
-                disabled={!size}
               >
-                Comanda
+                {merchandiseConfig.orderButtonText}
               </Button>
             </Box>
           </Grid>

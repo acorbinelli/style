@@ -5,7 +5,6 @@ import YouTubeIcon from "@mui/icons-material/YouTube"
 import InstagramIcon from "@mui/icons-material/Instagram"
 import TwitterIcon from "@mui/icons-material/Twitter"
 import PinterestIcon from "@mui/icons-material/Pinterest"
-import { BLACK_DEFAULT, PINK_LIGHT } from "../theme"
 
 const Footer = () => {
   return (
@@ -21,7 +20,7 @@ const Footer = () => {
         sx={{
           fontFamily: "Segoe print",
           fontSize: 16,
-          color: BLACK_DEFAULT,
+          color: (theme) => theme.palette.primary.main,
         }}
       >
         Urmariti-ne si pe:
@@ -35,27 +34,52 @@ const Footer = () => {
         }}
       >
         <IconButton
-          sx={{ "&:hover": { color: "white", background: PINK_LIGHT } }}
+          sx={{
+            "&:hover": {
+              color: "white",
+              background: (theme) => theme.palette.secondary.main,
+            },
+          }}
         >
           <FacebookIcon />
         </IconButton>
         <IconButton
-          sx={{ "&:hover": { color: "white", background: PINK_LIGHT } }}
+          sx={{
+            "&:hover": {
+              color: "white",
+              background: (theme) => theme.palette.secondary.main,
+            },
+          }}
         >
           <YouTubeIcon />
         </IconButton>
         <IconButton
-          sx={{ "&:hover": { color: "white", background: PINK_LIGHT } }}
+          sx={{
+            "&:hover": {
+              color: "white",
+              background: (theme) => theme.palette.secondary.main,
+            },
+          }}
         >
           <InstagramIcon />
         </IconButton>
         <IconButton
-          sx={{ "&:hover": { color: "white", background: PINK_LIGHT } }}
+          sx={{
+            "&:hover": {
+              color: "white",
+              background: (theme) => theme.palette.secondary.main,
+            },
+          }}
         >
           <TwitterIcon />
         </IconButton>
         <IconButton
-          sx={{ "&:hover": { color: "white", background: PINK_LIGHT } }}
+          sx={{
+            "&:hover": {
+              color: "white",
+              background: (theme) => theme.palette.secondary.main,
+            },
+          }}
         >
           <PinterestIcon />
         </IconButton>

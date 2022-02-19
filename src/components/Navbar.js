@@ -10,7 +10,6 @@ import {
 } from "@mui/material"
 import Logo from "./Logo"
 import NavbarItems from "./NavbarItems"
-import { PINK_LIGHTEST, PINK_LIGHT } from "../theme"
 
 const Navbar = () => {
   return (
@@ -27,13 +26,13 @@ const Navbar = () => {
         <ListItem
           button
           component={Link}
-          to='/Acasa'
+          to='/Home'
           sx={{
             mr: 3,
             "&:hover": {
-              background: PINK_LIGHTEST,
+              background: (theme) => theme.palette.secondary.light,
               borderRadius: 2,
-              color: PINK_LIGHT,
+              color: (theme) => theme.palette.secondary.main,
             },
           }}
         >

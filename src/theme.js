@@ -1,19 +1,19 @@
 import { createTheme } from "@mui/material"
 
-export const BLACK_DEFAULT = "#323232"
-export const PINK_DARK = "#FA4EAB"
-export const PINK_LIGHT = "#ED9FC5"
-export const PINK_LIGHTEST = "#fffafd"
+export const DEFAULT = "#323232"
+export const DARK = "#FA4EAB"
+export const LIGHT = "#ED9FC5"
+export const LIGHTEST = "#fffafd"
 
 export const theme = createTheme({
   palette: {
     primary: {
-      main: BLACK_DEFAULT,
+      main: DEFAULT,
     },
     secondary: {
-      main: PINK_LIGHT,
-      dark: PINK_DARK,
-      light: PINK_LIGHTEST,
+      main: LIGHT,
+      dark: DARK,
+      light: LIGHTEST,
     },
   },
 })

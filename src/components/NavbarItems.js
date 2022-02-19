@@ -1,20 +1,19 @@
-import { useState, useEffect, Fragment } from "react"
+import { useState, useEffect } from "react"
+import headerConfig from "../storeConfig/headerConfig"
 import { useNavigate } from "react-router-dom"
 import { ListItem, Button, IconButton, Badge } from "@mui/material"
 import ShoppingBagIcon from "@mui/icons-material/ShoppingBag"
-import { appRoutes } from "../routes"
-import { PINK_LIGHT, BLACK_DEFAULT } from "../theme"
-import HainePopover from "./HainePopover"
-import Cumparaturi from "../pages/Cumparaturi/Cumparaturi"
+import Popover from "./Popover"
+import Basket from "../pages/Basket/Basket"
 import { useShoppingContext } from "../context/ShoppingContext"
 
 const NavbarItems = () => {
   const [openModal, setOpenModal] = useState(false)
   const [anchorEl, setAnchorEl] = useState(null)
 
-  const { itemsQuantity, items } = useShoppingContext()
+  const { itemsQuantity, items, setSelectedCategory } = useShoppingContext()
 
-  const onHaineClick = (event) => {
+  const onMerchandiseClick = (event) => {
     setAnchorEl(event.currentTarget)
   }
 
@@ -30,79 +29,129 @@ const NavbarItems = () => {
 
   const navigate = useNavigate()
 
+  const getPagePerType = (navItem, index) => {
+    const type = navItem.type
+
+    switch (type) {
+      case "homePage": {
+        return (
+          <ListItem key={index}>
+            <Button
+              variant='text'
+              onClick={() => navigate(navItem.path)}
+              sx={{
+                fontFamily: "Segoe print",
+                fontSize: 18,
+                color: (theme) => theme.palette.primary.main,
+                "&:hover": {
+                  background: (theme) => theme.palette.secondary.main,
+                  color: "white",
+                },
+              }}
+              size='small'
+            >
+              {navItem.tag}
+            </Button>
+          </ListItem>
+        )
+      }
+
+      case "merchandise": {
+        return (
+          <ListItem key={index}>
+            <Button
+              variant='text'
+              onClick={(event) => {
+                if (navItem?.subMenu) {
+                  onMerchandiseClick(event)
+                } else {
+                  navigate(navItem.path)
+                  setSelectedCategory(navItem.tag)
+                }
+              }}
+              sx={{
+                fontFamily: "Segoe print",
+                fontSize: 18,
+                color: (theme) => theme.palette.primary.main,
+                "&:hover": {
+                  background: (theme) => theme.palette.secondary.main,
+                  color: "white",
+                },
+              }}
+              size='small'
+            >
+              {navItem.tag}
+            </Button>
+            {navItem?.subMenu && (
+              <Popover
+                anchorEl={anchorEl}
+                setAnchorEl={setAnchorEl}
+                subMenu={navItem.subMenu}
+                parentMenuName={navItem.tag}
+              />
+            )}
+          </ListItem>
+        )
+      }
+      case "contactPage": {
+        return (
+          <ListItem key={index}>
+            <Button
+              variant='text'
+              onClick={() => navigate(navItem.path)}
+              sx={{
+                fontFamily: "Segoe print",
+                fontSize: 18,
+                color: (theme) => theme.palette.primary.main,
+                "&:hover": {
+                  background: (theme) => theme.palette.secondary.main,
+                  color: "white",
+                },
+              }}
+              size='small'
+            >
+              {navItem.tag}
+            </Button>
+          </ListItem>
+        )
+      }
+      case "shoppingBasket": {
+        return (
+          <ListItem key={index}>
+            <IconButton
+              onClick={onShoppingClick}
+              disabled={!items.length}
+              sx={{
+                "&:hover": {
+                  background: (theme) => theme.palette.secondary.main,
+                  color: "white",
+                  "& .MuiBadge-standard": {
+                    background: (theme) => theme.palette.primary.main,
+                    color: "white",
+                  },
+                },
+              }}
+              size='large'
+            >
+              <Badge badgeContent={itemsQuantity} max={99} color='secondary'>
+                <ShoppingBagIcon fontSize='large' />
+              </Badge>
+            </IconButton>
+          </ListItem>
+        )
+      }
+      default: {
+        return null
+      }
+    }
+  }
+
   return (
     <>
-      {appRoutes.map((route, index) => {
-        if (route.name !== "Cumparaturi" && route.name !== "Haine") {
-          return (
-            <ListItem key={index}>
-              <Button
-                variant='text'
-                onClick={() => navigate(route.path)}
-                sx={{
-                  fontFamily: "Segoe print",
-                  fontSize: 18,
-                  color: BLACK_DEFAULT,
-                  "&:hover": { background: PINK_LIGHT, color: "white" },
-                }}
-                size='small'
-              >
-                {route.name}
-              </Button>
-            </ListItem>
-          )
-        }
-        if (route.name === "Cumparaturi") {
-          return (
-            <ListItem key={index}>
-              <IconButton
-                onClick={onShoppingClick}
-                disabled={!items.length}
-                sx={{
-                  "&:hover": {
-                    background: PINK_LIGHT,
-                    color: "white",
-                    "& .MuiBadge-standard": {
-                      background: BLACK_DEFAULT,
-                      color: "white",
-                    },
-                  },
-                }}
-                size='large'
-              >
-                <Badge badgeContent={itemsQuantity} max={99} color='secondary'>
-                  <ShoppingBagIcon fontSize='large' />
-                </Badge>
-              </IconButton>
-            </ListItem>
-          )
-        }
-        if (route.name === "Haine") {
-          return (
-            <ListItem key={index}>
-              <Button
-                variant='text'
-                onClick={(event) => {
-                  onHaineClick(event)
-                }}
-                sx={{
-                  fontFamily: "Segoe print",
-                  fontSize: 18,
-                  color: BLACK_DEFAULT,
-                  "&:hover": { background: PINK_LIGHT, color: "white" },
-                }}
-                size='small'
-              >
-                {route.name}
-              </Button>
-              <HainePopover anchorEl={anchorEl} setAnchorEl={setAnchorEl} />
-            </ListItem>
-          )
-        }
-        return null
-      })}
-
-      <Cumparaturi openModal={openModal} onShoppingClick={onShoppingClick} />
+      {headerConfig.navItems.map((navItem, index) =>
+        getPagePerType(navItem, index)
+      )}
+      <Basket openModal={openModal} onShoppingClick={onShoppingClick} />
     </>
   )
 }
