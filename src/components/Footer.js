@@ -1,5 +1,6 @@
 import React from "react"
 import { Box, Typography, IconButton } from "@mui/material"
+import footerConfig from "../storeConfig/footerConfig"
 import FacebookIcon from "@mui/icons-material/Facebook"
 import YouTubeIcon from "@mui/icons-material/YouTube"
 import InstagramIcon from "@mui/icons-material/Instagram"
@@ -23,7 +24,7 @@ const Footer = () => {
           color: (theme) => theme.palette.primary.main,
         }}
       >
-        Urmariti-ne si pe:
+        {footerConfig.text}
       </Typography>
 
       <Box

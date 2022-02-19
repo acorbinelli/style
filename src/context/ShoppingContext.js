@@ -27,6 +27,7 @@ const ShoppingContext = createContext({
 export const ShoppingProvider = ({ children }) => {
   const location = useLocation()
   const path = location.pathname
+  const availablePaths = headerConfig.navItems.map((item) => item.path)
   const [itemsQuantity, setItemsQuantity] = useState(0)
   const [items, setItems] = useState([])
   const [totalPrice, setTotalPrice] = useState(0)
@@ -44,7 +45,8 @@ export const ShoppingProvider = ({ children }) => {
   }, [])
 
   useEffect(() => {
-    if (path !== "/Home" && path !== "/Contact") {
+    const foundPath = availablePaths.find((avPath) => avPath === path)
+    if (path !== "/Home" && path !== "/Contact" && foundPath) {
       const navItem = headerConfig.navItems.find((item) => item.path === path)
       if (navItem && navItem?.subMenu) {
         setSelectedCategory(navItem.subMenu[0])
@@ -52,6 +54,8 @@ export const ShoppingProvider = ({ children }) => {
         setSelectedCategory(navItem.tag)
       }
     }
+
+    //eslint-disable-next-line
   }, [])
 
   useEffect(() => {

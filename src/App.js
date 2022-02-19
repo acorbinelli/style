@@ -1,6 +1,6 @@
 import { Grid, Box, ThemeProvider, CssBaseline } from "@mui/material"
 import { useLocation } from "react-router-dom"
-import { PINK_LIGHTEST, theme } from "./theme"
+import { theme } from "./theme"
 import Home from "./pages/Home/Home"
 import Merchandise from "./pages/Merchandise/Merchandise"
 import Contact from "./pages/Contact/Contact"

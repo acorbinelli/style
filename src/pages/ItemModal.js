@@ -125,7 +125,7 @@ const ItemModal = ({ openModal, setOpenModal, selectedItem }) => {
               <Button
                 variant='contained'
                 color='secondary'
-                sx={{ color: "white", mt: 3 }}
+                sx={{ color: "white", mt: 3, fontFamily: "Segoe Print" }}
                 onClick={() => {
                   onAddItem({ ...selectedItem, quantity: quantity, size: size })
                   setQuantity(1)

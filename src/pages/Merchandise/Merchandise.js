@@ -52,6 +52,7 @@ const Merchandise = () => {
                   </Grid>
                 )
               }
+              return null
             })}
           </Grid>
         </Paper>

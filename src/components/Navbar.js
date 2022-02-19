@@ -1,13 +1,6 @@
 import React from "react"
 import { Link } from "react-router-dom"
-import {
-  Grid,
-  Box,
-  ThemeProvider,
-  CssBaseline,
-  List,
-  ListItem,
-} from "@mui/material"
+import { Box, List, ListItem } from "@mui/material"
 import Logo from "./Logo"
 import NavbarItems from "./NavbarItems"
 
@@ -26,7 +19,7 @@ const Navbar = () => {
         <ListItem
           button
           component={Link}
-          to='/Home'
+          to='/Acasa'
           sx={{
             mr: 3,
             "&:hover": {

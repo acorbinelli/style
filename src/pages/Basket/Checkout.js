@@ -8,7 +8,7 @@ const Checkout = () => {
   return (
     <Box
       sx={{
-        background: (theme) => theme.palette.secondary.light,
+        background: (theme) => theme.palette.secondary.main,
         p: 2,
         color: "white",
         borderRadius: 2,
@@ -62,8 +62,7 @@ const Checkout = () => {
           mt: 1,
         }}
       >
-        {checkOutConfig.buttonText} ({itemsQuantity}
-        {checkOutConfig.buttonItemsText})
+        {`${checkOutConfig.buttonText} (${itemsQuantity} ${checkOutConfig.buttonItemsText})`}
       </Button>
     </Box>
   )
